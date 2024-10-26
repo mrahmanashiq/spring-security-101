@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Bootcamp - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <style>
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="/" class="nav-link">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="/admin" class="nav-link">
+                <i class="fas fa-shield-alt"></i> Admin
+            </a>
+            <a href="/dashboard" class="nav-link">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </a>
+            <a href="/user" class="nav-link">
+                <i class="fas fa-user"></i> User
+            </a>
+        </div>
+
+        <div class="user-info">
+            <div th:if="${username != null}">
+                <i class="fas fa-user-circle"></i>
+                <span th:text="${username}"></span>
+                <a th:href="@{/logout}" class="btn btn-danger">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+            <div th:if="${username == null}">
+                <a href="/login" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="content">
+    <div class="welcome-banner">
+        <h1>Welcome to Java Bootcamp Dashboard</h1>
+        <p>Track your progress and manage your learning journey</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="stats-card">
+            <i class="fas fa-book"></i>
+            <h3>Course Progress</h3>
+            <p>Current Module: Advanced Java</p>
+        </div>
+
+        <div class="stats-card">
+            <i class="fas fa-tasks"></i>
+            <h3>Assignments</h3>
+            <p>5 Pending Tasks</p>
+        </div>
+
+        <div class="stats-card">
+            <i class="fas fa-trophy"></i>
+            <h3>Achievements</h3>
+            <p>12 Badges Earned</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Recent Activities</h2>
+        <p>View your latest learning activities and progress updates here.</p>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Bootcamp - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <style>
+        .hero-banner {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .benefit-card i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="/" class="nav-link">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="/admin" class="nav-link">
+                <i class="fas fa-shield-alt"></i> Admin
+            </a>
+            <a href="/dashboard" class="nav-link">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </a>
+            <a href="/user" class="nav-link">
+                <i class="fas fa-user"></i> User
+            </a>
+        </div>
+
+        <div class="user-info">
+            <div th:if="${username != null}">
+                <i class="fas fa-user-circle"></i>
+                <span th:text="${username}"></span>
+                <a th:href="@{/logout}" class="btn btn-danger">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+            <div th:if="${username == null}">
+                <a href="/login" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="content">
+    <div class="hero-banner">
+        <h1><i class="fas fa-graduation-cap"></i> Welcome to Java Bootcamp</h1>
+        <p>Transform your career with our comprehensive Java development program. Learn from industry experts and build
+            real-world applications.</p>
+        <a href="/register" class="cta-button">
+            <i class="fas fa-rocket"></i> Start Your Journey
+        </a>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="stats-card">
+            <i class="fas fa-users"></i>
+            <h3>500+ Students</h3>
+            <p>Join our thriving community of developers</p>
+        </div>
+        <div class="stats-card">
+            <i class="fas fa-code"></i>
+            <h3>50+ Projects</h3>
+            <p>Build real-world applications</p>
+        </div>
+        <div class="stats-card">
+            <i class="fas fa-certificate"></i>
+            <h3>Industry Ready</h3>
+            <p>Get professional certification</p>
+        </div>
+    </div>
+
+    <section class="benefits-grid">
+        <div class="benefit-card">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Expert Instructors</h3>
+            <p>Learn from experienced developers who work in leading tech companies.</p>
+        </div>
+        <div class="benefit-card">
+            <i class="fas fa-tools"></i>
+            <h3>Hands-on Learning</h3>
+            <p>Practice with real projects and build your portfolio.</p>
+        </div>
+        <div class="benefit-card">
+            <i class="fas fa-clock"></i>
+            <h3>Flexible Schedule</h3>
+            <p>Learn at your own pace with 24/7 access to course materials.</p>
+        </div>
+        <div class="benefit-card">
+            <i class="fas fa-handshake"></i>
+            <h3>Career Support</h3>
+            <p>Get guidance on job placement and interview preparation.</p>
+        </div>
+    </section>
+
+    <div class="cta-section">
+        <h2>Ready to Start Your Java Journey?</h2>
+        <p>Join thousands of successful developers who have transformed their careers with our bootcamp.</p>
+        <a href="/register" class="cta-button">
+            <i class="fas fa-arrow-right"></i> Enroll Now
+        </a>
+    </div>
+</main>
+</body>
+</html>
